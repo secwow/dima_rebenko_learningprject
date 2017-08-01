@@ -3,13 +3,13 @@
 
 @implementation Employee
 
-- (NSString*) fullName
+- (NSString *)fullName
 {
     return [_lastName stringByAppendingString:_firstName];
     
 }
 
--(id)initWithFirstName:(NSString *) fName lastNameInit: (NSString *) lName initSalary: (NSInteger) iSalary
+- (id)initWithFirstName:(NSString *)fName lastNameInit:(NSString *)lName initSalary:(NSInteger)iSalary
 {
     self = [super init];
     if (self)

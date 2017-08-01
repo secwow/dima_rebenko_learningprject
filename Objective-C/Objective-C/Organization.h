@@ -14,12 +14,12 @@
 @property (nonatomic,readwrite) NSArray<Employee *> *empls;
 @property (nonatomic,readonly) NSString *name;
 
--(id) initWithName: (NSString *) name;
--(void) addEmployeeWithName: (NSString *) name;
--(void) addEmployee: (Employee *) employee;
--(NSInteger) calculateAverageSalary;
--(Employee *) employeeWithLowestSalary;
--(NSArray *) employeesWithSalary: (int) salary tolerance: (int) tolerance;
--(void)removeEmployee:(Employee *)employee;
+- (id)initWithName:(NSString *)name;
+- (void)addEmployeeWithName:(NSString *)name;
+- (void)addEmployee:(Employee *)employee;
+- (NSInteger)calculateAverageSalary;
+- (Employee *)employeeWithLowestSalary;
+- (NSArray *)employeesWithSalary:(int)salary tolerance:(int)tolerance;
+- (void)removeEmployee:(Employee *)employee;
 
 @end

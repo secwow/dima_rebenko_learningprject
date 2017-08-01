@@ -7,8 +7,6 @@
 
 
 
-
-
 - (id)initWithName:(NSString *)orgName
 {
     self = [super init];
@@ -20,12 +18,13 @@
     return self;
 }
 
-- (void) addEmployeeWithName: (NSString *) name
+- (void)addEmployeeWithName:(NSString *)name
 {
     NSInteger randomSalary = (LOWER_BOUND + arc4random() % (UPPER_BOUND - LOWER_BOUND)) * 10;
     NSArray <NSString *> *fullName = [name componentsSeparatedByString: @" "];
     
-    if(fullName.count  < 2){
+    if(fullName.count  < 2)
+    {
         @throw NSInvalidArgumentException;
     }
     
@@ -33,12 +32,12 @@
     [self addEmployee:temp];
 }
 
--(void) addEmployee: (Employee *) employee
+- (void)addEmployee:(Employee *)employee
 {
     _empls = [_empls arrayByAddingObject: employee];
 }
 
--(void) removeEmployee:(Employee *)employee
+- (void)removeEmployee:(Employee *)employee
 {
     NSInteger indexOfObject = [_empls indexOfObject:employee];
     NSArray *firstPart = [_empls subarrayWithRange:NSMakeRange(0, indexOfObject)];
@@ -46,26 +45,29 @@
     _empls = [firstPart arrayByAddingObjectsFromArray: secondPart];
 }
 
--(NSInteger) calculateAverageSalary
+- (NSInteger)calculateAverageSalary
 {
     NSInteger avarageSalary=0;
-    for(int i =0; i < _empls.count; i++){
+    for(int i =0; i < _empls.count; i++)
+    {
         avarageSalary += _empls[i].salary;
     }
     return avarageSalary / _empls.count;
 }
 
--(Employee *) employeeWithLowestSalary
+- (Employee *)employeeWithLowestSalary
 {
     NSInteger minSalary = INT_MAX;
     Employee *result=nil;
     for(int i=0; i < _empls.count; i++){
-        if(_empls[i].salary < minSalary){
+        if(_empls[i].salary < minSalary)
+        {
             minSalary = _empls[i].salary;
         }
     }
     for(int i=0; i < _empls.count; i++){
-        if(_empls[i].salary == minSalary){
+        if(_empls[i].salary == minSalary)
+        {
             result = _empls[i];
             break;
         }
@@ -73,16 +75,17 @@
     return result;
 }
 
--(NSArray*)employeesWithSalary: (int) salary tolerance: (int) tolerance
+- (NSArray*)employeesWithSalary:(int)salary tolerance:(int)tolerance
 {
-    NSMutableArray <Employee*>* resultEmpls = [[NSMutableArray alloc] init];
+    NSMutableArray <Employee *> *resultEmpls = [[NSMutableArray alloc] init];
     for(int i = 0; i < _empls.count; i++){
         if(_empls[i].salary - tolerance <= salary &&
-           _empls[i].salary + tolerance >= salary ){
+           _empls[i].salary + tolerance >= salary )
+        {
             [resultEmpls addObject:_empls[i]];
         }
     }
-    return  resultEmpls.copy;
+    return resultEmpls.copy;
 }
 
 @end
