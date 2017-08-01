@@ -39,6 +39,16 @@ int main(int argc, const char * argv[]) {
             NSLog(@"Employee %@ %ld with salary  between %d AND %d ", emplArray[i].fullName, emplArray[i].salary, SALARY, TOLERANCE);
         }
         
+        NSLog(@"\n ///////////////////////");
+        
+        [org removeEmployee:temp];
+        emplArray = [org employeesWithSalary:SALARY tolerance:TOLERANCE];
+        
+        for(int i = 0; i < emplArray.count; i++){
+            NSLog(@"Employee %@ %ld with salary  between %d AND %d ", emplArray[i].fullName, emplArray[i].salary, SALARY, TOLERANCE);
+        }
+        NSLog(@"\n ///////////////////////");
+        
         
     }
     return 0;
