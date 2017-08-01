@@ -38,6 +38,14 @@
     _empls = [_empls arrayByAddingObject: employee];
 }
 
+-(void) removeEmployee:(Employee *)employee
+{
+    NSInteger indexOfObject = [_empls indexOfObject:employee];
+    NSArray *firstPart = [_empls subarrayWithRange:NSMakeRange(0, indexOfObject)];
+    NSArray *secondPart = [_empls subarrayWithRange:NSMakeRange(indexOfObject + 1, _empls.count - indexOfObject - 1)];
+    _empls = [firstPart arrayByAddingObjectsFromArray: secondPart];
+}
+
 -(NSInteger) calculateAverageSalary
 {
     NSInteger avarageSalary=0;
